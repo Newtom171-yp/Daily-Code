@@ -6,10 +6,11 @@ int expo(int a, int b)
     int ans = 1;
     if (!b)
         return ans;
+    int multi = expo(a, b >> 1);
     if (b & 1)
-        ans = a * expo(a, b >> 1) * expo(a, b >> 1);
+        ans = a * multi * multi;
     else
-        ans = expo(a, b >> 1) * expo(a, b >> 1);
+        ans = multi * multi;
     return ans;
 }
 
