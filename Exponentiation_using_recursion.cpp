@@ -7,9 +7,9 @@ int expo(int a, int b)
     if (!b)
         return ans;
     if (b & 1)
-        ans = a * expo(a, b / 2) * expo(a, b / 2);
+        ans = a * expo(a, b >> 1) * expo(a, b >> 1);
     else
-        ans = expo(a, b / 2) * expo(a, b / 2);
+        ans = expo(a, b >> 1) * expo(a, b >> 1);
     return ans;
 }
 
