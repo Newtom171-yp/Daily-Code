@@ -5,7 +5,7 @@ using namespace std;
 string Reverse(string& s, int l, int r){
     if(l > r) return s;
     swap(s[l],s[r]);
-    return Reverse(s, ++l, --r);
+    return Reverse(s, l, s.length()-1-(++l));
 }
 
 int main(){
