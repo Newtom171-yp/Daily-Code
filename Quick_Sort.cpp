@@ -15,11 +15,11 @@ int partition(int *arr, int l, int r)
 
     int pivotIndex = count + l;
     int i = l, j = r;
-    while (i != j)
+    while (i <pivotIndex && j > pivotIndex)
     {
         while(arr[i] < arr[pivotIndex]) i++;
         while(arr[j] > arr[pivotIndex]) j--;
-        if(i != j) swap(arr[i++],arr[j--]);
+        if(i <pivotIndex && j > pivotIndex) swap(arr[i++],arr[j--]);
 
     }
     return pivotIndex;
