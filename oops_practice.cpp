@@ -8,6 +8,10 @@ class HERO
     char level = 3;
 
 public:
+    HERO(){
+        cout <<"Constructor Called"<<endl;
+    }
+
     int gethealth()
     {
         return health;
