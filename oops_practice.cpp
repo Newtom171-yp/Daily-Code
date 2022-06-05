@@ -12,6 +12,11 @@ public:
         cout <<"Constructor Called"<<endl;
     }
 
+    HERO(int health){
+        cout<<"Value preset at this : "<<this<<endl;
+        this->health = health;
+    }
+
     int gethealth()
     {
         return health;
@@ -44,5 +49,10 @@ int main()
     cout << "Health before setting: " << Nagraj->gethealth() << endl;
     Nagraj->sethealth(101);
     cout << "Health after setting: " << (*Nagraj).gethealth() << endl;
+
+    HERO Heman(11);
+    cout<<"Address of Heman : "<<&Heman<<endl;
+    cout<<"Health of Paramterized Heman : "<<Heman.gethealth()<<endl;
+    
     return 0;
 }
