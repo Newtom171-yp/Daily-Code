@@ -17,6 +17,10 @@ public:
         this->health = health;
     }
 
+    void print(){
+        cout<< this->health << " "<< this->level;
+    }
+
     int gethealth()
     {
         return health;
@@ -53,6 +57,11 @@ int main()
     HERO Heman(11);
     cout<<"Address of Heman : "<<&Heman<<endl;
     cout<<"Health of Paramterized Heman : "<<Heman.gethealth()<<endl;
-    
+    Heman.print();
+
+
+    HERO CopyHero(Heman);
+    CopyHero.print();
+
     return 0;
 }
