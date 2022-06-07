@@ -1,15 +1,26 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 class HERO
 {
     // properties
     int health = 100;
-    char level = 3;
+    char level = 'A';
 
 public:
+    char* name;
     HERO(){
         cout <<"Constructor Called"<<endl;
+        name = new char[100];
+    }
+
+    HERO(HERO& copy){
+        cout << "Copy constructor called: "<<endl;
+        char *temp = new char[strlen(copy.name)+1];
+        strcpy(this->name, temp);
+        this->health = copy.health;
+        this->level = copy.level;
     }
 
     HERO(int health){
@@ -18,7 +29,7 @@ public:
     }
 
     void print(){
-        cout<< this->health << " "<< this->level;
+        cout<< this->health << " "<< this->level <<" "<<this->name<<endl;
     }
 
     int gethealth()
@@ -40,6 +51,9 @@ public:
     {
         level = l;
     }
+    void setName(char name[]){
+        strcpy(this->name, name);
+    }
 };
 
 int main()
@@ -57,11 +71,11 @@ int main()
     HERO Heman(11);
     cout<<"Address of Heman : "<<&Heman<<endl;
     cout<<"Health of Paramterized Heman : "<<Heman.gethealth()<<endl;
-    Heman.print();
-
-
+    char name[6]="Heman";
+    Heman.setName(name);
     HERO CopyHero(Heman);
+    Heman.name[0]='G';
+    Heman.print();
     CopyHero.print();
-
     return 0;
 }
