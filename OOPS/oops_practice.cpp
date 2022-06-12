@@ -24,12 +24,12 @@ int main(){
     Hero h1(100,'A',"Heman");
     h1.print();
 
-    Hero h2 (h1);
-    h2.print();
+    Hero *h2(&h1);
+    h2->print();
 
-    h1.name = "Lambda";
-    cout<<h1.name<<endl;
-    h2.print();
+    h1.name[0] = 'L';
+    cout<<endl<<h1.name<<endl;
+    h2->print();
 
     return 0;
 }
