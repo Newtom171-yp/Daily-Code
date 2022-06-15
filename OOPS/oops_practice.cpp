@@ -1,35 +1,38 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 class Hero{
     public:
     int health;
-    char level;
-    char* name = new char[100];
+    char* name;
+    Hero(){
+        name = new char[100];
+    }
+
+    Hero(Hero &copy){
+        char* ch = new char[strlen(copy.name)+1];
+        strcpy(ch,copy.name);
+        this->name = ch;
+        this->health = copy.health;
+    }
 
     void print(){
-        cout<<endl<<"[ "<<this->health<<" "<<this->level<<" "<<this->name<<" ]"<<endl;
+        cout<<endl<<"[ "<<this->name<<" "<<this->health<<" ]"<<endl;
     }
-
-    Hero(int health, char level, char name[]){
-        this->health = health;
-        this->level = level;
-        this->name = name;
-    }
-    
 };
 
 int main(){
 
-    Hero h1(100,'A',"Heman");
+    Hero h1;
+    h1.health = 100;
+    char name[7] = "Babbar";
+    h1.name = name;
     h1.print();
-
-    Hero *h2(&h1);
-    h2->print();
-
-    h1.name[0] = 'L';
-    cout<<endl<<h1.name<<endl;
-    h2->print();
-
+    Hero h2(h1);
+    h1.name[0]='G';
+    h1.health = 200;
+    h1.print();
+    h2.print();
     return 0;
 }
