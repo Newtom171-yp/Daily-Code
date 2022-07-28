@@ -7,10 +7,7 @@ int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight)
     for(int i = 1; i <= n; i++)
     {
         for(int j = 1; j <= maxWeight; j++)
-        {
-            //Not Included
-            dp[i][j] = dp[i-1][j];
-            
+        {            
             if(j >= weight[i-1])
             {
                 int remain = j - weight[i-1];
