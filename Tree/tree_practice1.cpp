@@ -100,19 +100,100 @@ void reverseLevelOrder(node * &root)
     }
 }
 
+void inOrder(node* &root)
+{
+    if(!root) return;
+
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+
+void preOrder(node* &root)
+{
+    if(!root) return;
+
+    cout << root->data << " ";
+    inOrder(root->left);
+    inOrder(root->right);
+}
+
+void postOrder(node* &root)
+{
+    if(!root) return;
+
+    inOrder(root->left);
+    inOrder(root->right);
+    cout << root->data << " ";
+}
+
+void buildFromLevelOrder(node* &root)
+{
+    queue<node*> q;
+    cout<<"Enter data for root: "<<endl;
+    int data;
+    cin >> data;
+
+    root = new node(data);
+    q.push(root);
+
+    while(!q.empty())
+    {
+        node* temp = q.front();
+        q.pop();
+
+        cout << "Enter left node for: "<< temp->data << endl;
+        
+        int leftData;
+        cin >> leftData;
+
+        if(leftData != -1)
+        {
+            temp ->left = new node(leftData);
+            q.push(temp->left);
+        }
+
+        cout << "Enter right node for: "<< temp->data << endl;
+        
+        int rightData;
+        cin >> rightData;
+
+        if(rightData != -1)
+        {
+            temp ->right = new node(rightData);
+            q.push(temp->right);
+        }
+
+    }
+}
+
 int main()
 {
 
     node* root = NULL;
 
-    root = buildTree(root);
+    buildFromLevelOrder(root);
 
-    cout << " The Level Order Traversal of the Tree is :"<< endl;
+    // root = buildTree(root);
+
+    cout << endl << "The Level Order Traversal of the Tree is :"<< endl;
 
     levelOrderTraversal(root);
 
-    cout << "The Reverse Level Order Traversal of the Tree is :" << endl;
-    reverseLevelOrder(root);
+    // cout << endl << "The Reverse Level Order Traversal of the Tree is :" << endl;
+    // reverseLevelOrder(root);
+
+    // cout<< endl << "The Inorder traversal of the tree is: "<< endl;
+    
+    // inOrder(root);
+    
+    // cout<< endl << "The preorder traversal of the tree is: "<< endl;
+    
+    // preOrder(root);
+
+    // cout<< endl << "The postorder traversal of the tree is: "<< endl;
+
+    // postOrder(root);
 
     return 0;
 }
